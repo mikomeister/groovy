@@ -52,17 +52,12 @@ pipeline {
                     vars.codebase_filename = vars.studentName + "_" + vars.projectName
                     vars.codebaseBranch_filename = vars.studentName + "_" + vars.projectName + "_" + "masterBranch"
 
-
                     yamlRepresentation = getYamlRepresentation(codebase_template)
                     yamlCustomResource = configureYamlCustomResource(yamlRepresentation)
                     writeYamlCustomResourceFile(vars.codebase_filename,yamlCustomResource)
 
-
                     yamlCodebaseBranch = configureCodebaseBranch(codebaseBranch_template)
                     writeYamlCustomResourceFile(vars.codebaseBranch_filename, yamlCodebaseBranch)
-
-
-
 
                 }
             }
@@ -86,8 +81,6 @@ def configureCodebaseBranch(cbFile){
     codebaseBranchYaml.spec.codebaseName = vars.studentName + "-" + vars.projectName
 
     return codebaseBranchYaml
-
-
 }
 
 def writeYamlCustomResourceFile(filename, yamlRepresentation){
@@ -141,7 +134,6 @@ def initCodebase(params) {
 
     userNameLowerCase = splitedUserName[0]
     userSurnameLowerCase = splitedUserName[1]
-
 
     vars.studentName = userNameLowerCase + "-" + userSurnameLowerCase
     vars.projectName = params.Project.toLowerCase()
